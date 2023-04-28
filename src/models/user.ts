@@ -14,7 +14,12 @@ const User = createModel<any>()({
   },
 
   effects: (dispatch) => ({
-    async finalizeAsync() {},
+    async fetchGoogle() {
+      const response = await fetch("www.google.co.jp");
+      const text = await response.text();
+      console.log(text);
+      this.setResult(text);
+    },
   }),
 });
 

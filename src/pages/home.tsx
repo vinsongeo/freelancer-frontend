@@ -5,16 +5,16 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import { connect } from 'react-redux';
 import { AnyARecord } from 'dns';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const theme = createTheme();
 
 function Home(props: any) {
-
+    const navigate = useNavigate();
     React.useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        setResult(params.get("result") as string);
+
     }, []);
 
     return (
@@ -22,7 +22,7 @@ function Home(props: any) {
             <Container component="main" maxWidth="xs">
                 <Typography>Home</Typography>
                 <Typography>result:{props.state.user.result}</Typography>
-                <Link href='/signin' >
+                <Link onClick={() => { navigate("/signin") }} >
                     signin
                 </Link>
             </Container>
